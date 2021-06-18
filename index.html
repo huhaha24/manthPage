@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <link rel="stylesheet" href="./style.css" type="text/css" />
+  <title>蜂算考研数学</title>
+</head>
+
+<body>
+  <div class='dragPage' id='manthPage'>
+    我是首页<button @click="linkPage">跳转页面1</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+    const coupon = new Vue({
+      el: '#manthPage',
+      data: {},
+      methods: {
+        linkPage() {
+          window.location.href = './page1.html'
+        }
+      },
+
+      mounted() {}
+    })
+  </script>
+</body>
+
+</html>
