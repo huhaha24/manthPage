@@ -1,31 +1,200 @@
+<!-- 做题页面 -->
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <link rel="stylesheet" href="./style.css" type="text/css" />
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="./index.css" type="text/css" />
   <title>蜂算考研数学</title>
 </head>
 
 <body>
-  <div class='dragPage' id='manthPage'>
-    我是首页<button @click="linkPage">跳转页面1</button>
+  <div class='manthPage' id='manthPage'>
+    <div class='manthPage__header'>
+      <img class='manthPage__header-logo' src='./logo.png' />
+      <img class='manthPage__header-slogn' src='./slogn.png' />
+    </div>
+    <div class='manthPage__content'>
+      <div class='manthPage__content-title'>
+        <img src='./mark.png' />
+        <span>改编自历年真题</span>
+      </div>
+      <!-- 问题内容 -->
+      <section class='manthPage__content-question'>
+        <div style="text-align: left;margin-left: 1.8rem;">讨论二重极限是否存在，如果存在求出极限值：</div>
+        <img src='./question.png' />
+      </section>
+
+      <!-- 选项 -->
+      <section class='manthPage__content-answer' v-for='(item, index) in answerMap'>
+        <div :key='item.key' class='manthPage__content-btn' :class="{ 
+            'right': activeKey === item.key && item.isRight,
+            'error': activeKey === item.key && !item.isRight
+          }" @click="handleChooseAnswer(item)">
+          {{ item.text }}
+        </div>
+      </section>
+
+      <!-- 提示 -->
+      <section style="position: relative;">
+        <div class='tipBtn' v-if='showTipBtn' @Click="handleShowPopover">获取提示</div>
+
+        <div class="popover" v-if='showPopover'>
+          <div class='sharp top'></div>
+          <div class="box">二重极限要求所有路径下极限都相同</div>
+          <div class="box" v-if='showTip2'>取特殊路径y=kx</div>
+          <div class="maskBox" v-else @Click="handleShowTip2">
+            <img class="mask" src='./mask.png' />
+            <span class="maskText">点击显示提示二</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 分析 -->
+      <section class='manthPage__content-analysis' v-if='showAnalysis'>
+        <div class='analysis__more'><img src='./more.png' /></div>
+        <div class='analysis__details'>
+          <div>
+            <div class='step1 step__title' @Click="handleFold('step1')">
+              <div><span>步骤一：</span>取特殊路经y=kx，计算极限</div>
+              <img src='./unfold-gray.png' />
+            </div>
+            <div class='step__img' :class="{ 'hidden': !showStep1 }"><img src='./step1.png' /></div>
+          </div>
+          <div>
+            <div class='step2 step__title' @Click="handleFold('step2')">
+              <div><span>步骤二：</span>判断极限值是否与k有关</div>
+              <img src='./unfold-gray.png' />
+            </div>
+            <div class='step__img' :class="{ 'hidden': !showStep2 }"><img src='./step2.png' /></div>
+          </div>
+          <div>
+            <div class='summary step__title' @Click="handleFold('summary')">
+              <div><span>总结</span></div>
+              <img src='./unfold-blue.png' />
+            </div>
+            <div class='summary__img step__img' :class="{ 'hidden': !showSummary }"><img src='./step3.png' /></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 下一题 -->
+      <section class='manthPage__content-next'>
+        <div class='nextBtn' v-if='showAnalysis' @Click="linkPage">下一题</div>
+      </section>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
   <script>
+    const ANSWER_MAP = [
+      { key: 0, text: '不存在', isRight: true },
+      { key: 1, text: '存在且极限为0', isRight: false },
+      { key: 2, text: '存在且极限为1', isRight: false },
+      { key: 3, text: '存在且极限为-1', isRight: false }
+    ]
     const coupon = new Vue({
       el: '#manthPage',
-      data: {},
+      data: {
+        answerMap: ANSWER_MAP,
+        activeKey: null,
+
+        showAnalysis: false,
+        showStep1: false,
+        showStep2: false,
+        showSummary: false,
+
+        showTipBtn: true,
+        showPopover: false,
+        showTip2: false,
+        
+        // 错误次数
+        errorCount: 0
+      },
       methods: {
         linkPage() {
-          window.location.href = './page1.html'
+          window.location.href = './adPage.html?result=1'
+        },
+
+        changeStatus(key) {
+          this.showPopover = false
+          this.showTipBtn = false
+          this.showAnalysis = true
+
+          this.answerMap = ANSWER_MAP.filter(item => item.key === key)
+        },
+
+        handleChooseAnswer(item) {
+          this.activeKey = item.key
+
+          /* 如果正确的话，直接筛选出所选的选项，并展示解析*/
+          /* 如果错误的话，
+            第一次错误，展示提示和toast；
+            第二次错误，筛选出所选的选项，并展示解析
+          */
+          if (!item.isRight) {
+            if (this.errorCount > 0) {
+              // 第二次错误
+              this.changeStatus(item.key)
+            } else {
+              // 第一次错误
+              this.showToast('根据提示，再试一次')
+              this.showPopover = true
+              this.errorCount++
+            }
+          } else {
+            this.changeStatus(item.key)
+          }
+        },
+
+        handleFold(id) {
+          switch (id) {
+            case 'step1':
+              this.showStep1 = !this.showStep1
+              break;
+            case 'step2':
+              this.showStep2 = !this.showStep2
+              break;
+            case 'summary':
+              this.showSummary = !this.showSummary
+              break;
+            default:
+              break
+          }
+        },
+
+        handleShowTip2() {
+          this.showTip2 = true
+        },
+
+        handleShowPopover() {
+          this.showPopover = !this.showPopover
+        },
+
+        // 提示toast
+        showToast(content, time = 1500) {
+          const el = document.createElement("div")
+          el.setAttribute("class", "toast")
+          el.innerHTML = content
+          document.body.appendChild(el)
+          setTimeout(function () {
+            el.classList.remove("fadeIn")
+            el.classList.add("fadeOut")
+            /*监听动画结束，移除提示信息元素*/
+            el.addEventListener("animationend", function () {
+              document.body.removeChild(el)
+            })
+            el.addEventListener("webkitAnimationEnd", function () {
+              document.body.removeChild(el)
+            })
+          }, time)
         }
       },
 
-      mounted() {}
+      mounted() { }
     })
   </script>
 </body>
