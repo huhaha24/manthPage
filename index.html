@@ -54,7 +54,13 @@
 
       <!-- 分析 -->
       <section class='manthPage__content-analysis' v-if='showAnalysis'>
-        <div class='analysis__more'><img src='./more.png' /></div>
+        <div 
+          class='analysis__more'
+          @Click="handleFoldAnswer"
+          v-if='showAnalysis && answerMap.length === 1'
+        >
+          <img src='./more.png' />
+        </div>
         <div class='analysis__details'>
           <div>
             <div class='step1 step__title' @Click="handleFold('step1')">
@@ -127,7 +133,12 @@
           this.answerMap = ANSWER_MAP.filter(item => item.key === key)
         },
 
+        handleFoldAnswer() {
+          this.answerMap = ANSWER_MAP
+        },
+
         handleChooseAnswer(item) {
+          if (this.showAnalysis) return
           this.activeKey = item.key
 
           /* 如果正确的话，直接筛选出所选的选项，并展示解析*/
