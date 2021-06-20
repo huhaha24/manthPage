@@ -162,7 +162,7 @@ html, body {
   color: rgba(255, 255, 255, 1);
   font-size: 0.875rem;
   position: absolute;
-  top: 50%;
+  top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -248,7 +248,7 @@ html, body {
   padding: 0.825rem 1.25rem;
   border-radius: 3px;
   left: 50%;
-  top: 10%;
+  top: 8%;
   transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   -moz-transform: translate(-50%,-50%);
