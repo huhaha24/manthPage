@@ -1,0 +1,307 @@
+/* 做题页面 */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.manthPage {
+  font-size: 16px;
+  color: rgba(42, 49, 85, 1);
+}
+
+/* logo部分 */
+.manthPage__header {
+  display: flex;
+  padding: 0.8rem;
+  background: rgba(65, 95, 213, 1);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.manthPage__header-logo {
+  width: 7rem;
+  height: 100%;
+}
+
+.manthPage__header-slogn {
+  width: 9.01rem;
+}
+
+/* 题目部分 */
+.manthPage__content {
+  padding: 1rem 0.75rem;
+}
+
+.manthPage__content-title {
+  color: rgba(148, 152, 170, 1);
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+}
+
+.manthPage__content-title img {
+  width: 1.75rem;
+  margin-right: 0.5rem;
+}
+
+/* 题目 */
+.manthPage__content-question {
+  padding: 0.75rem 0 1rem 0;
+  text-align: center;
+  box-shadow: 0 0.125rem 0.5rem 0 rgb(42 49 85 / 10%);
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.manthPage__content-question img {
+  width: 8.13rem;
+  margin-top: 0.25rem;
+}
+
+/* 选项 */
+.manthPage__content-answer {
+  margin: 1rem 0;
+}
+
+.manthPage__content-btn {
+  border-radius: 0.125rem;
+  border: 0.0625rem solid rgba(230, 232, 239, 1);
+  text-align: center;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.right {
+  border-color: rgba(21, 195, 146, 1);
+  color: rgba(21, 195, 146, 1);
+}
+
+.error {
+  border-color: rgba(255, 66, 54, 1);
+  color: rgba(255, 66, 54, 1);
+}
+
+/* 提示 */
+.tipBtn {
+  border-radius: 1.5rem;
+  border: 0.0625rem solid rgba(252, 224, 127, 1);
+  background-color: rgba(254, 248, 229, 1);
+  color: rgba(245, 166, 34, 1);
+  padding: 0.625rem;
+  text-align: center;
+  margin: 1rem 0 4.5rem 0;
+  position: relative;
+}
+
+/* 提示框 */
+.popover {
+  min-width: 91.8%;
+  height: 6.25rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.0625rem 0.5rem 0 rgba(0, 0, 0, 0.1);
+  padding: 0.2rem 1rem;
+  position: absolute;
+  top: 4rem;
+}
+
+.sharp,
+.sharp:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.sharp {
+    border-width: 11px;
+}
+
+.sharp.top {
+  top: -11px;
+  margin-left: 42%;
+  border-bottom-color: #999;
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+  border-top-width: 0;
+}
+
+.sharp.top:after {
+  top: 1px;
+  bottom: 1px;
+  margin-left: -10px;
+  content: " ";
+  border-width: 10px;
+  border-top-width: 0;
+  border-bottom-color: #fff;
+}
+
+.box {
+  border-radius: 0.125rem;
+  border: 0.0625rem solid rgba(230, 232, 239, 1);
+  text-align: center;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: rgba(42, 49, 85, 1);
+}
+
+.mask {
+  width: 100%;
+}
+
+.maskBox {
+  position: relative;
+}
+
+.maskText {
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.875rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 解析 */
+.analysis__more {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.analysis__more img {
+  width: 0.875rem;
+}
+
+.analysis__details {
+  border-radius: 0.75rem;
+  box-shadow: 0 0.0625rem 0.5rem 0 rgba(42, 49, 85, 0.1);
+}
+
+.step__title {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  align-items: center;
+  font-size: 0.875rem;
+  border-bottom: 0.0625rem solid rgba(230, 232, 239, 1);
+}
+
+.step__title span {
+  color: rgba(65, 95, 213, 1);
+  font-weight: bold;
+}
+
+.step__title img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.summary {
+  justify-content: center;
+  border: none;
+}
+
+.summary img {
+  margin-left: 0.5rem;
+}
+
+.step__img {
+  padding: 0.75rem 1rem;
+  background-color: rgba(239, 242, 247, 1);
+}
+
+.step__img img{
+  width: 100%;
+}
+
+.summary__img {
+  border-radius: 0 0 0.75rem 0.75rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 下一题 */
+.nextBtn {
+  border-radius: 1.5rem;
+  background-color: rgba(65, 95, 213, 1);
+  color: #fff;
+  font-weight: bold;
+  padding: 0.625rem;
+  text-align: center;
+  margin: 1rem 0 4.5rem 0;
+}
+
+/* toast提示框 */
+.toast{
+  position: fixed;
+  background: rgba(52, 60, 101, 0.9);
+  color: #fff;
+  line-height: 1;
+  font-size: 0.875rem;
+  padding: 0.825rem 1.25rem;
+  border-radius: 3px;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  z-index: 9999;
+  white-space: nowrap;
+}
+
+.fadeOut{
+  animation: fadeOut .5s;
+}
+.fadeIn{
+  animation:fadeIn .5s;
+}
+
+@keyframes fadeIn {
+  0%    {opacity: 0}
+  100%  {opacity: 1}
+}
+@-webkit-keyframes fadeIn {
+  0%    {opacity: 0}
+  100%  {opacity: 1}
+}
+@-moz-keyframes fadeIn {
+  0%    {opacity: 0}
+  100%  {opacity: 1}
+}
+@-o-keyframes fadeIn {
+  0%    {opacity: 0}
+  100%  {opacity: 1}
+}
+@-ms-keyframes fadeIn {
+  0%    {opacity: 0}
+  100%  {opacity: 1}
+}
+@keyframes fadeOut {
+  0%    {opacity: 1}
+  100%  {opacity: 0}
+}
+@-webkit-keyframes fadeOut {
+  0%    {opacity: 1}
+  100%  {opacity: 0}
+}
+@-moz-keyframes fadeOut {
+  0%    {opacity: 1}
+  100%  {opacity: 0}
+}
+@-o-keyframes fadeOut {
+  0%    {opacity: 1}
+  100%  {opacity: 0}
+}
+@-ms-keyframes fadeOut {
+  0%    {opacity: 1}
+  100%  {opacity: 0}
+}

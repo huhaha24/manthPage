@@ -1,0 +1,71 @@
+<!-- 宣传页面 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <link rel="stylesheet" href="./adPageStyles.css" type="text/css" />
+  <title>蜂算考研数学</title>
+</head>
+
+<body>
+  <div class='adPage' id='adPage'>
+    <div class="result">
+      <div class="result__part1">
+        <div class="result__part1-imgBox">
+          <img :src="`./${result.imgKey}.png`"/>
+          <div class="result__part1-title">{{result.title}}</div>
+          <div class="result__part1-text">{{result.text1}}</div>
+        </div>
+        <div class="result__part1-text">{{result.text2}}</div>
+      </div>
+      <div class="result__part2">
+        <img class="result__part2-qrcode" src='./qrcode.png'/>
+        <div>
+          关注公众号&nbsp;
+          <span style="color: rgba(65, 95, 213, 1);font-weight: bold;">“无穹进阶”</span>
+          &nbsp;免费试用<br/>
+          直接回复口令获赠付费章节
+        </div>
+        <div style="position: relative;">
+          <img class="result__part2-password" src='./password.png'/>
+          <span class="result__part2-code">6A66</span>
+        </div>
+      </div>
+    </div>
+    <img class='adPage__img' src='./adImg1.png'/>
+    <img class='adPage__img' src='./adImg2.png'/>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+    const coupon = new Vue({
+      el: '#adPage',
+      data: {
+        result: {
+          imgKey: 'error',
+          title: '加油！',
+          text1: '使用蜂算数学',
+          text2: '从思路高度迅速提升！'
+        }
+      },
+      methods: {},
+
+      mounted() {
+        let param = window.location.search
+        param = param.indexOf('=') === -1 ? 0 : param.split('=')[1]
+        if (+param) {
+          this.result = {
+            imgKey: 'right',
+            title: '太棒了！',
+            text1: '我们精炼了更多好题',
+            text2: '即刻开始高数题型思路训练吧'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

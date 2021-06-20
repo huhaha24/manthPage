@@ -1,0 +1,66 @@
+/* 宣传页面 */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+.adPage {
+  font-size: 16px;
+}
+
+.adPage__img {
+  width: 100%;
+}
+
+.result {
+  background-color: rgba(245, 166, 34, 1);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.result__part1-imgBox {
+  background: radial-gradient(ellipse,rgba(255, 255, 255, 0.67) 0,rgba(245, 166, 34, 0.6) 74%);
+}
+
+.result__part1-imgBox img {
+  width: 12rem;
+}
+
+.result__part1-title {
+  color: rgba(255, 255, 255, 1);
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.result__part1-text {
+  color: rgba(42, 49, 85, 1);
+  margin: 0.2rem 0;
+  font-weight: 500;
+}
+
+.result__part2 {
+  background: #fff;
+  border-radius: 0.8rem;
+  margin: 1.5rem 0 0.5rem 0;
+  padding: 1rem;
+  color: rgba(42, 49, 85, 1);
+}
+
+.result__part2-qrcode {
+  width: 8rem;
+}
+
+.result__part2-password {
+  width: 12.6rem;
+  margin: 0.8rem 0 0.4rem 0;
+}
+
+.result__part2-code {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: rgba(42, 49, 85, 1);
+  font-weight: bold;
+  font-size: 1.5rem;
+  transform: translate(-60%, -50%);
+}
