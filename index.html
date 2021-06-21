@@ -41,11 +41,11 @@
       <section style="position: relative;">
         <div class='tipBtn' v-if='showTipBtn' @Click="handleShowPopover">获取提示</div>
 
-        <div class="popover" v-if='showPopover'>
+        <div id='popover' class="popover fadeIn" v-if='showPopover'>
           <div class='sharp top'></div>
           <div class="box">二重极限要求所有路径下极限都相同</div>
           <div class="box" v-if='showTip2'>取特殊路径y=kx</div>
-          <div class="maskBox" v-else @Click="handleShowTip2">
+          <div class="maskBox" id='maskBox' v-else @Click="handleShowTip2">
             <img class="mask" src='./mask.png' />
             <span class="maskText">点击显示提示二</span>
           </div>
@@ -177,12 +177,25 @@
           }
         },
 
-        handleShowTip2() {
-          this.showTip2 = true
+        handleShowTip2(e) {
+          const el = document.getElementById('maskBox')
+          el.classList.add("fadeOut")
+          setTimeout(() => {
+            this.showTip2 = true
+          }, 400)
         },
 
         handleShowPopover() {
-          this.showPopover = !this.showPopover
+          if (this.showPopover) {
+            const el = document.getElementById('popover')
+            el.classList.remove("fadeIn")
+            el.classList.add("fadeOut")
+            setTimeout(() => {
+              this.showPopover = !this.showPopover
+            }, 200)
+          } else {
+            this.showPopover = !this.showPopover
+          }
         },
 
         // 提示toast
