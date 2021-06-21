@@ -13,24 +13,19 @@
     <div class="result">
       <div class="result__part1">
         <div class="result__part1-imgBox">
-          <img :src="`./${result.imgKey}.png`"/>
-          <div class="result__part1-title">{{result.title}}</div>
-          <div class="result__part1-text">{{result.text1}}</div>
+          <img src='./error.png'/>
+          <div class="result__part1-text">快尝试探索更多题目吧！</div>
         </div>
-        <div class="result__part1-text">{{result.text2}}</div>
       </div>
       <div class="result__part2">
         <img class="result__part2-qrcode" src='./qrcode.png'/>
         <div>
           关注公众号&nbsp;
           <span style="color: rgba(65, 95, 213, 1);font-weight: bold;">“无穹进阶”</span>
-          &nbsp;免费试用<br/>
-          直接回复口令获赠付费章节
+          &nbsp;免费试用
         </div>
-        <div style="position: relative;">
-          <img class="result__part2-password" src='./password.png'/>
-          <span class="result__part2-code">6A66</span>
-        </div>
+        <div class="result__part2-function">答疑 ｜ 测试 ｜ 解析 ｜ 总结</div>
+        <div class="result__part2-btn" @Click="toWeixin">前往微信</div>
       </div>
     </div>
     <img class='adPage__img' src='./adImg1.png'/>
@@ -42,28 +37,47 @@
   <script>
     const coupon = new Vue({
       el: '#adPage',
-      data: {
-        result: {
-          imgKey: 'error',
-          title: '加油！',
-          text1: '使用蜂算数学',
-          text2: '从思路高度迅速提升！'
+      data: {},
+      methods: {
+        copyText(str) {
+          const save = e => {
+              e.clipboardData.setData('text/plain', str)
+              e.preventDefault()
+          }
+          document.addEventListener('copy', save)
+          document.execCommand('copy')
+          document.removeEventListener('copy',save)
+        },
+
+        showToast(content, time = 1500) {
+          const el = document.createElement("div")
+          el.setAttribute("class", "toast")
+          el.innerHTML = content
+          document.body.appendChild(el)
+          setTimeout(function () {
+            el.classList.remove("fadeIn")
+            el.classList.add("fadeOut")
+            /*监听动画结束，移除提示信息元素*/
+            el.addEventListener("animationend", function () {
+              document.body.removeChild(el)
+            })
+            el.addEventListener("webkitAnimationEnd", function () {
+              document.body.removeChild(el)
+            })
+          }, time)
+        },
+
+        toWeixin() {
+          this.copyText('无穹进阶')
+          this.showToast('已复制 “无穹进阶” 到剪贴板')
+          // 前往微信
+          setTimeout(() => {
+            window.location.href = 'weixin://'
+          }, 1500)
         }
       },
-      methods: {},
 
-      mounted() {
-        let param = window.location.search
-        param = param.indexOf('=') === -1 ? 0 : param.split('=')[1]
-        if (+param) {
-          this.result = {
-            imgKey: 'right',
-            title: '太棒了！',
-            text1: '我们精炼了更多好题',
-            text2: '即刻开始高数题型思路训练吧'
-          }
-        }
-      }
+      mounted() {}
     })
   </script>
 </body>
