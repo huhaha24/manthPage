@@ -1,9 +1,11 @@
 <!-- 宣传页面 -->
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <link rel="stylesheet" href="./adPageStyles.css" type="text/css" />
   <title>蜂算考研数学</title>
 </head>
@@ -13,12 +15,12 @@
     <div class="result">
       <div class="result__part1">
         <div class="result__part1-imgBox">
-          <img src='./error.png'/>
-          <div class="result__part1-text">快尝试探索更多题目吧！</div>
+          <img src='./error.png' />
+          <div class="result__part1-text">尝试探索更多题目吧！</div>
         </div>
       </div>
       <div class="result__part2">
-        <img class="result__part2-qrcode" src='./qrcode.png'/>
+        <img class="result__part2-qrcode" src='./qrcode.png' />
         <div>
           关注公众号&nbsp;
           <span style="color: rgba(65, 95, 213, 1);font-weight: bold;">“无穹进阶”</span>
@@ -28,8 +30,8 @@
         <div class="result__part2-btn" @Click="toWeixin">前往微信</div>
       </div>
     </div>
-    <img class='adPage__img' src='./adImg1.png'/>
-    <img class='adPage__img' src='./adImg2.png'/>
+    <img class='adPage__img' src='./adImg1.png' />
+    <img class='adPage__img' src='./adImg2.png' />
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -39,14 +41,25 @@
       el: '#adPage',
       data: {},
       methods: {
-        copyText(str) {
-          const save = e => {
-              e.clipboardData.setData('text/plain', str)
-              e.preventDefault()
+        copyText(str = '无穹进阶') {
+          // const save = e => {
+          //   e.clipboardData.setData('text/plain', str)
+          //   e.preventDefault()
+          // }
+          // document.addEventListener('copy', save)
+          // document.execCommand('copy')
+          // document.removeEventListener('copy', save)
+          if (typeof document.execCommand !== "function") {
+            this.showToast("复制失败，请长按复制")
+            return
           }
-          document.addEventListener('copy', save)
-          document.execCommand('copy')
-          document.removeEventListener('copy',save)
+          const dom = document.createElement("textarea")
+          dom.value = str
+          dom.setAttribute('style', 'display: block;width: 1px;height: 1px;')
+          document.body.appendChild(dom)
+          dom.select()
+          const result = document.execCommand('copy')
+          document.body.removeChild(dom)
         },
 
         showToast(content, time = 1500) {
@@ -77,7 +90,7 @@
         }
       },
 
-      mounted() {}
+      mounted() { }
     })
   </script>
 </body>
