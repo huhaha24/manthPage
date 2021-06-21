@@ -9,6 +9,7 @@ html, body {
 
 .adPage__img {
   width: 100%;
+  display: block;
 }
 
 .result {
@@ -44,10 +45,22 @@ html, body {
   width: 8rem;
 }
 
+.result__part2-copyText {
+  text-align: center;
+	font-size: 24px;
+	margin-top: 20px;
+	width: 100%;
+	height: 40px;
+	background: white;
+	border: white;
+	outline: none;
+}
+
 .result__part2-function {
   color: rgba(148, 152, 170, 1);
   margin-bottom: 1rem;
   margin-top: 0.2rem;
+  font-size: 0.875rem;
 }
 
 .result__part2-btn {
