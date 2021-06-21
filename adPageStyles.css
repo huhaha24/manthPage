@@ -18,24 +18,18 @@ html, body {
 }
 
 .result__part1-imgBox {
-  background: radial-gradient(ellipse,rgba(255, 255, 255, 0.67) 0,rgba(245, 166, 34, 0.6) 74%);
+  background: radial-gradient(ellipse,rgba(255, 255, 255, 0.67) 0,rgba(245, 166, 34, 0.6) 70%);
 }
 
 .result__part1-imgBox img {
   width: 12rem;
 }
 
-.result__part1-title {
-  color: rgba(255, 255, 255, 1);
-  font-weight: bold;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .result__part1-text {
   color: rgba(42, 49, 85, 1);
   margin: 0.2rem 0;
-  font-weight: 500;
+  font-weight: 300;
+  font-size: 1.5rem;
 }
 
 .result__part2 {
@@ -50,17 +44,86 @@ html, body {
   width: 8rem;
 }
 
-.result__part2-password {
-  width: 12.6rem;
-  margin: 0.8rem 0 0.4rem 0;
+.result__part2-function {
+  color: rgba(148, 152, 170, 1);
+  margin-bottom: 1rem;
+  margin-top: 0.2rem;
 }
 
-.result__part2-code {
-  position: absolute;
-  top: 50%;
+.result__part2-btn {
+  width: 9.25rem;
+  background-color: rgba(64, 95, 212, 1);
+  border-radius: 1.125rem;
+  padding: 0.4375rem 0;
+  margin: 0 auto;
+  color: #fff;
+}
+
+/* 提示 */
+.toast{
+  position: fixed;
   left: 50%;
-  color: rgba(42, 49, 85, 1);
-  font-weight: bold;
-  font-size: 1.5rem;
-  transform: translate(-60%, -50%);
+  top: 50%;
+  background: rgba(52, 60, 101, 0.9);
+  color: #fff;
+  line-height: 1;
+  font-family: "Microsoft YaHei";
+  padding: 0.825rem 1.25rem;
+  border-radius: 3px;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  z-index: 9999;
+  white-space: nowrap;
+}
+
+/* 淡入淡出特效 */
+.fadeOut{
+  animation: fadeOut .5s;
+}
+.fadeIn{
+  animation:fadeIn .5s;
+}
+
+@keyframes fadeIn {
+  0%    {opacity: 0}
+  100%  {opacity: 1}
+}
+@-webkit-keyframes fadeIn {
+  0%    {opacity: 0}
+  100%  {opacity: 1}
+}
+@-moz-keyframes fadeIn {
+  0%    {opacity: 0}
+  100%  {opacity: 1}
+}
+@-o-keyframes fadeIn {
+  0%    {opacity: 0}
+  100%  {opacity: 1}
+}
+@-ms-keyframes fadeIn {
+  0%    {opacity: 0}
+  100%  {opacity: 1}
+}
+@keyframes fadeOut {
+  0%    {opacity: 1}
+  100%  {opacity: 0}
+}
+@-webkit-keyframes fadeOut {
+  0%    {opacity: 1}
+  100%  {opacity: 0}
+}
+@-moz-keyframes fadeOut {
+  0%    {opacity: 1}
+  100%  {opacity: 0}
+}
+@-o-keyframes fadeOut {
+  0%    {opacity: 1}
+  100%  {opacity: 0}
+}
+@-ms-keyframes fadeOut {
+  0%    {opacity: 1}
+  100%  {opacity: 0}
 }
