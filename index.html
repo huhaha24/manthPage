@@ -122,8 +122,7 @@
       },
       methods: {
         linkPage() {
-          // window.location.href = './adPage.html?result=1'
-          window.location.href = 'weixin://'
+          window.location.href = './adPage.html'
         },
 
         changeStatus(key) {
@@ -183,7 +182,7 @@
           el.classList.add("fadeOut")
           setTimeout(() => {
             this.showTip2 = true
-          }, 400)
+          }, 100)
         },
 
         handleShowPopover() {
