@@ -41,8 +41,12 @@ html, body {
   color: rgba(42, 49, 85, 1);
 }
 
+.result__part2-name {
+  font-size: 1.125rem;
+}
+
 .result__part2-qrcode {
-  width: 8rem;
+  width: 10rem;
 }
 
 .result__part2-copyText {
