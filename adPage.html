@@ -27,7 +27,7 @@
           &nbsp;免费试用
         </div>
         <div class="result__part2-function">答疑 ｜ 测试 ｜ 解析 ｜ 总结</div>
-        <div class="result__part2-btn" @Click="toWeixin">前往微信</div>
+        <div class="result__part2-btn" @Click="toWeixin">复制名称添加</div>
       </div>
     </div>
     <img class='adPage__img' src='./adImg1.png' />
@@ -42,13 +42,6 @@
       data: {},
       methods: {
         copyText(str = '无穹进阶') {
-          // const save = e => {
-          //   e.clipboardData.setData('text/plain', str)
-          //   e.preventDefault()
-          // }
-          // document.addEventListener('copy', save)
-          // document.execCommand('copy')
-          // document.removeEventListener('copy', save)
           if (typeof document.execCommand !== "function") {
             this.showToast("复制失败，请长按复制")
             return
@@ -85,8 +78,8 @@
           this.showToast('已复制 “无穹进阶” 到剪贴板')
           // 前往微信
           setTimeout(() => {
-            window.location.href = 'weixin://'
-          }, 1500)
+            window.location.href = 'weixin://dl/business/?ticket=t2bb633158c12ca604128507aadf58ddc'
+          }, 1000)
         }
       },
 
