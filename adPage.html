@@ -7,7 +7,7 @@
   <meta name="viewport"
     content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <link rel="stylesheet" href="./adPageStyles.css" type="text/css" />
-  <title>蜂算考研数学</title>
+  <title>无穹考研</title>
 </head>
 
 <body>
@@ -30,11 +30,22 @@
         <div class="result__part2-btn" @Click="toWeixin">复制名称添加</div>
       </div>
     </div>
-    <img class='adPage__img' src='./adImg1.png' />
-    <img class='adPage__img' src='./adImg2.png' />
+    <!-- <img class='adPage__img' src='./adImg1.png' /> -->
+    <!-- <img class='adPage__img' src='./adImg2.png' /> -->
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- 百度统计代码 -->
+  <!-- <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?00ba35e77fc64d15bc5e0fd601321b64";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
 
   <script>
     const coupon = new Vue({
@@ -78,7 +89,7 @@
           this.showToast('已复制 “无穹进阶” 到剪贴板')
           // 前往微信
           setTimeout(() => {
-            window.location.href = 'weixin://dl/business/?ticket=t2bb633158c12ca604128507aadf58ddc'
+            window.location.href = 'weixin://'
           }, 1000)
         }
       },
